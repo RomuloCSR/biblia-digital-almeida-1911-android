@@ -13,7 +13,12 @@ if [ ! -f "$DEST/motor.biblia" ]; then
 fi
 chmod +x "$DEST/motor.biblia"
 grep -q "alias biblia=" ~/.bashrc 2>/dev/null || echo "alias biblia='cd "$DEST" && ./motor.biblia'" >> ~/.bashrc
+mkdir -p "$HOME/.termux/task"
+echo -e "#!/data/data/com.termux/files/usr/bin/bash
+cd "$DEST" && ./motor.biblia" > "$HOME/.termux/task/Bíblia"
+chmod +x "$HOME/.termux/task/Bíblia"
 echo ""
-echo "Pronto! Nas proximas vezes (sem internet), digite apenas: biblia"
+echo "✅ Pronto! Para ler, digite: biblia"
+echo "📱 Para criar o ícone na tela inicial, adicione o widget do Termux:Widget e escolha Bíblia!"
 echo ""
 exec "$DEST/motor.biblia" </dev/tty
