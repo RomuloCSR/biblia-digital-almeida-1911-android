@@ -1,25 +1,36 @@
-# Bíblia Digital Almeida 1911 — Android ARM64 (100% Offline)
+# 📖 Bíblia Digital Almeida 1911 (PT-BR) — Android (Termux ARM64)
 
-Leitor bíblico leve, rápido e discreto para **Android**, compilado nativamente em C para **ARM64** com atualização ortográfica e gramatical realizada em **11/2026** para o português do Brasil.
+Motor de navegação offline desenvolvido em **Linguagem C** nativa para dispositivos **Android (ARM64)** via **Termux**, com atualização ortográfica e gramatical completa para o Português do Brasil (PT-BR) e paginação centralizada.
 
 ---
 
-## Instalação e Leitura em 3 Passos
+## 📱 Requisitos e Dica de Leitura
 
-### 1. Instale o Termux no Android
-Baixe e instale o aplicativo gratuito **Termux** (via **F-Droid** ou **GitHub Releases**).
+* **Aplicativo:** [Termux](https://f-droid.org/packages/com.termux/) (recomendado baixar via F-Droid ou GitHub oficial).
+* **Melhor experiência visual:** Utilize o celular na posição **paisagem (horizontal)** para que as 3 colunas de livros e as margens de 74 caracteres fiquem perfeitamente centralizadas na tela.
+* **Ajuste de fonte:** Use o movimento de **pinça na tela (dois dedos)** para aumentar ou diminuir o tamanho das letras no Termux a qualquer momento.
 
-### 2. Instale e abra a Bíblia com 1 linha
-Abra o **Termux**, cole (ou digite) a linha abaixo e aperte **Enter**:
+---
 
+## 🚀 Instalação Rápida no Termux
+
+Abra o **Termux** no seu celular Android e siga os dois passos abaixo:
+
+### 1. Instale o curl (caso ainda não tenha instalado)
 ```bash
-curl -sL [https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh](https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh) | bash
+pkg update -y && pkg install -y curl
 ```
 
-Em poucos segundos a Bíblia abre automaticamente na tela.
+### 2. Baixe e execute o instalador oficial
+```bash
+curl -sLO [https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh](https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh) && bash instalar.sh
+```
 
-### 3. Nos próximos dias (100% Offline)
-Sempre que abrir o Termux novamente, digite apenas uma palavra e aperte **Enter**:
+---
+
+## ⚡ Como abrir depois de instalado
+
+Sempre que quiser abrir a Bíblia novamente no Termux (mesmo sem internet), basta digitar:
 
 ```bash
 biblia
@@ -27,20 +38,16 @@ biblia
 
 ---
 
-## 💡 Dica Importante para Celular (Leitura Vertical)
+## ✨ Recursos do Motor em C
 
-Como o celular tem a tela estreita, o texto pode parecer quebrado ou desalinhado em pé.
-* **Para resolver instantaneamente:** Faça o **movimento de pinça com dois dedos na tela** (como se estivesse diminuindo uma foto) para reduzir o tamanho da letra. O Termux se ajustará na hora, deixando as colunas e os versículos perfeitamente alinhados e confortáveis para leitura!
-
----
-
-## Atalhos durante a leitura
-
-* **`ENTER`** — Próxima página do capítulo.
-* **`T` + `ENTER`** — Capítulo inteiro na tela.
-* **`0` + `ENTER`** — Volta ao menu principal.
+* **100% Offline:** Todos os 66 livros (Antigo e Novo Testamento) ficam salvos localmente no aparelho.
+* **Atualização Ortográfica e Gramatical (PT-BR):** Conversão automática em tempo real da grafia histórica de 1911 para o português contemporâneo do Brasil.
+* **Leitura Paginada:** Navegação confortável página por página (`[ENTER]`), leitura contínua do capítulo inteiro (`[T]`) ou retorno rápido ao menu (`[0]`).
 
 ---
+
+## 🤝 Apoie esta Obra
 
 * **Autor:** Romulo CSR ([github.com/RomuloCSR](https://github.com/RomuloCSR))
-* **Apoio espontâneo (PIX):** `21980934118`
+* **Contribuição espontânea via PIX:** `21980934118`
+* **Licença do texto bíblico:** Domínio Público (Almeida Revista e Corrigida 1911).
