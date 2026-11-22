@@ -1617,7 +1617,7 @@ int main(void) {
  imprimir_linha_centralizada("BÍBLIA DIGITAL ALMEIDA 1911 EM PT-BR (DOMÍNIO PÚBLICO)", LARGURA_PAGINA);
  imprimir_linha_centralizada("Atualização Ortográfica e Gramatical realizada em 11/2026", LARGURA_PAGINA);
  printf("%s%s", COR_RESET, COR_DIM);
- imprimir_linha_centralizada("Motor de navegação para Linux  |  Autor: Romulo CSR", LARGURA_PAGINA);
+ imprimir_linha_centralizada("Motor de navegação para Android ARM64  |  Autor: Romulo CSR", LARGURA_PAGINA);
  imprimir_linha_centralizada("Download free: github.com/RomuloCSR", LARGURA_PAGINA);
  imprimir_linha_centralizada("Colabore espontaneamente com esta obra via PIX: 21980934118", LARGURA_PAGINA);
  printf("%s", COR_RESET);
@@ -1627,7 +1627,7 @@ int main(void) {
  imprimir_espacos(margem + 4); printf("1 - Antigo Testamento\n");
  imprimir_espacos(margem + 4); printf("2 - Novo Testamento\n");
  imprimir_espacos(margem + 4); printf("3 - Sair\n\n");
- imprimir_espacos(margem + 4); printf("%sZoom da fonte: Ctrl + Shift + + (ou Ctrl + roda do mouse)%s\n\n", COR_DIM, COR_RESET);
+ imprimir_espacos(margem + 4); printf("%sZoom da fonte: movimento de pinça na tela (dois dedos)%s\n\n", COR_DIM, COR_RESET);
  imprimir_espacos(margem + 4); printf("Escolha uma opção: ");
 
  if (scanf("%d", &opcao_principal) != 1) {

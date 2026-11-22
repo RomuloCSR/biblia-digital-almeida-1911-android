@@ -13,7 +13,7 @@ Baixe e instale o aplicativo gratuito **Termux** (via **F-Droid** ou **GitHub Re
 Abra o **Termux**, cole (ou digite) a linha abaixo e aperte **Enter**:
 
 ```bash
-curl -sL [https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh](https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh) | bash
+curl -sL https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh | bash
 ```
 
 Em poucos segundos a Bíblia abre automaticamente na tela.
