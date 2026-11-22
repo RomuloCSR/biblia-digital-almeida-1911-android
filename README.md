@@ -1,31 +1,38 @@
-# Bíblia Digital Almeida 1911 em PT-BR — Android ARM64 (Domínio Público)
+# Bíblia Digital Almeida 1911 (Android — Leitura Offline)
 
-Leitor bíblico leve, rápido e offline compilado nativamente para **Android (ARM64)** com o **Android NDK**, trazendo atualização ortográfica e gramatical realizada em **11/2026** para o português do Brasil.
+Leitor bíblico leve, rápido e **100% offline** para celulares Android, com atualização ortográfica e gramatical realizada em **11/2026** para o português do Brasil.
 
-## Como baixar e ler no Android (Via Termux)
+---
 
-1. Instale o aplicativo **Termux** no seu celular Android (preferencialmente via F-Droid ou GitHub Releases).
-2. Baixe este repositório como `.zip` (botão verde **`<> Code`** -> **`Download ZIP`**) e extraia a pasta no armazenamento interno do celular (ex.: na pasta `Download`).
-3. Abra o **Termux**, libere o acesso ao armazenamento e entre na pasta extraída:
+## Como instalar e ler em 3 passos simples
 
-```bash
-termux-setup-storage
-cd ~/storage/downloads/biblia-digital-almeida-1911-android-main
-```
+### Passo 1: Instale o aplicativo Termux
+Baixe e instale o aplicativo gratuito **Termux** no seu celular Android (pelo **F-Droid** ou **GitHub Releases**).
 
-4. Dê permissão de execução ao binário ARM64 e inicie a leitura:
+### Passo 2: Copie e cole este comando único
+Abra o **Termux**, toque na tela preta, cole o comando abaixo e aperte **Enter** (se aparecer alguma pergunta `[Y/n]`, apenas aperte **Enter**):
 
 ```bash
-chmod +x motor.biblia
-./motor.biblia
+pkg update -y && pkg install -y wget unzip && cd ~ && rm -rf biblia-1911 biblia.zip && wget -q --show-progress [https://github.com/RomuloCSR/biblia-digital-almeida-1911-android/archive/refs/heads/main.zip](https://github.com/RomuloCSR/biblia-digital-almeida-1911-android/archive/refs/heads/main.zip) -O biblia.zip && unzip -q biblia.zip && mv biblia-digital-almeida-1911-android-main biblia-1911 && rm biblia.zip && bash ~/biblia-1911/instalar.sh
 ```
+
+Pronto! A Bíblia vai abrir imediatamente na tela do seu celular.
+
+### Passo 3: Como abrir nos próximos dias (Sem internet)
+Sempre que fechar o Termux e quiser ler novamente, basta abrir o aplicativo, digitar uma única palavra e apertar **Enter**:
+
+```bash
+biblia
+```
+
+---
 
 ## Comandos dentro da leitura
 
 * **`ENTER`** — Avança para a próxima página do capítulo.
 * **`T` + `ENTER`** — Exibe o capítulo inteiro de uma só vez.
 * **`0` + `ENTER`** — Volta imediatamente para o menu principal.
-* **Pinça na tela (dois dedos)** — Aumenta ou diminui o tamanho da letra no Termux.
+* **Pinça na tela (dois dedos)** — Aumenta ou diminui o tamanho da letra.
 
 ---
 
