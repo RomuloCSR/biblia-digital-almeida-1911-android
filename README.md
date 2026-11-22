@@ -1,25 +1,25 @@
-# Bíblia Digital Almeida 1911 (Android — Leitura Offline)
+# Bíblia Digital Almeida 1911 — Android ARM64 (100% Offline)
 
-Leitor bíblico leve, rápido e **100% offline** para celulares Android, com atualização ortográfica e gramatical realizada em **11/2026** para o português do Brasil.
+Leitor bíblico leve, rápido e discreto para **Android**, compilado nativamente em C para **ARM64** com atualização ortográfica e gramatical realizada em **11/2026** para o português do Brasil.
 
 ---
 
-## Como instalar e ler em 3 passos simples
+## Instalação e Leitura em 3 Passos
 
-### Passo 1: Instale o aplicativo Termux
-Baixe e instale o aplicativo gratuito **Termux** no seu celular Android (pelo **F-Droid** ou **GitHub Releases**).
+### 1. Instale o Termux no Android
+Baixe e instale o aplicativo gratuito **Termux** (via **F-Droid** ou **GitHub Releases**).
 
-### Passo 2: Copie e cole este comando único
-Abra o **Termux**, toque na tela preta, cole o comando abaixo e aperte **Enter** (se aparecer alguma pergunta `[Y/n]`, apenas aperte **Enter**):
+### 2. Instale e abra a Bíblia com 1 linha
+Abra o **Termux**, cole (ou digite) a linha abaixo e aperte **Enter**:
 
 ```bash
-pkg update -y && pkg install -y wget unzip && cd ~ && rm -rf biblia-1911 biblia.zip && wget -q --show-progress [https://github.com/RomuloCSR/biblia-digital-almeida-1911-android/archive/refs/heads/main.zip](https://github.com/RomuloCSR/biblia-digital-almeida-1911-android/archive/refs/heads/main.zip) -O biblia.zip && unzip -q biblia.zip && mv biblia-digital-almeida-1911-android-main biblia-1911 && rm biblia.zip && bash ~/biblia-1911/instalar.sh
+curl -sL [https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh](https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh) | bash
 ```
 
-Pronto! A Bíblia vai abrir imediatamente na tela do seu celular.
+Em poucos segundos a Bíblia abre automaticamente na tela.
 
-### Passo 3: Como abrir nos próximos dias (Sem internet)
-Sempre que fechar o Termux e quiser ler novamente, basta abrir o aplicativo, digitar uma única palavra e apertar **Enter**:
+### 3. Nos próximos dias (100% Offline)
+Sempre que abrir o Termux novamente, digite apenas uma palavra e aperte **Enter**:
 
 ```bash
 biblia
@@ -27,11 +27,11 @@ biblia
 
 ---
 
-## Comandos dentro da leitura
+## Atalhos durante a leitura
 
-* **`ENTER`** — Avança para a próxima página do capítulo.
-* **`T` + `ENTER`** — Exibe o capítulo inteiro de uma só vez.
-* **`0` + `ENTER`** — Volta imediatamente para o menu principal.
+* **`ENTER`** — Próxima página do capítulo.
+* **`T` + `ENTER`** — Capítulo inteiro na tela.
+* **`0` + `ENTER`** — Volta ao menu principal.
 * **Pinça na tela (dois dedos)** — Aumenta ou diminui o tamanho da letra.
 
 ---
