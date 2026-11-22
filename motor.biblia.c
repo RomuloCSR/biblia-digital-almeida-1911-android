@@ -88,6 +88,21 @@ void limpar_buffer_entrada(void) {
  while ((c = getchar()) != '\n' && c != EOF);
 }
 
+/* Lê um número inteiro de forma segura no Termux (evita loop em EOF e limpa o \n) */
+int ler_inteiro_seguro(int *destino) {
+ char linha[64];
+ if (fgets(linha, sizeof(linha), stdin) == NULL) {
+ return -1; /* EOF / entrada fechada */
+ }
+ char *fim;
+ long val = strtol(linha, &fim, 10);
+ if (fim == linha) {
+ return 0; /* Usuário digitou texto ou apenas ENTER */
+ }
+ *destino = (int)val;
+ return 1;
+}
+
 void obter_dimensoes_terminal(int *largura, int *altura) {
  struct winsize w;
  if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0 && w.ws_col > 0 && w.ws_row > 0) {
@@ -146,8 +161,10 @@ void pausar_tela(void) {
  imprimir_espacos(margem);
  printf("%s[Pressione ENTER para voltar ao menu...]%s", COR_DIM, COR_RESET);
  fflush(stdout);
- limpar_buffer_entrada();
- getchar();
+ char tmp[32];
+ if (fgets(tmp, sizeof(tmp), stdin) == NULL) {
+ return;
+ }
 }
 
 void exibir_data_hora(void) {
@@ -1428,12 +1445,14 @@ int verificar_pausa_pagina(int *linhas_na_pagina, int *modo_continuo, const char
  COR_DIM, COR_RESET);
  fflush(stdout);
 
- limpar_buffer_entrada();
- int ch = getchar();
- if (ch == '0') {
+ char resp[32];
+ if (fgets(resp, sizeof(resp), stdin) == NULL) {
  return 0;
  }
- if (ch == 't' || ch == 'T') {
+ if (resp[0] == '0') {
+ return 0;
+ }
+ if (resp[0] == 't' || resp[0] == 'T') {
  *modo_continuo = 1;
  return 2;
  }
@@ -1629,9 +1648,14 @@ int main(void) {
  imprimir_espacos(margem + 4); printf("3 - Sair\n\n");
  imprimir_espacos(margem + 4); printf("%sZoom da fonte: movimento de pinça na tela (dois dedos)%s\n\n", COR_DIM, COR_RESET);
  imprimir_espacos(margem + 4); printf("Escolha uma opção: ");
+ fflush(stdout);
 
- if (scanf("%d", &opcao_principal) != 1) {
- limpar_buffer_entrada();
+ int status_menu = ler_inteiro_seguro(&opcao_principal);
+ if (status_menu == -1) {
+ break; /* Evita loop infinito caso stdin seja fechado no Termux */
+ }
+ if (status_menu == 0) {
+ opcao_principal = 0;
  continue;
  }
 
@@ -1666,8 +1690,13 @@ int main(void) {
  printf("\n");
  imprimir_espacos(margem); printf(" 0 - Voltar\n");
  imprimir_espacos(margem); printf(" Escolha um livro: ");
- if (scanf("%d", &opcao_livro) != 1) {
- limpar_buffer_entrada();
+ fflush(stdout);
+
+ int status_livro = ler_inteiro_seguro(&opcao_livro);
+ if (status_livro == -1) {
+ break;
+ }
+ if (status_livro == 0) {
  continue;
  }
 
@@ -1678,8 +1707,14 @@ int main(void) {
  imprimir_espacos(margem);
  printf("%s selecionado. Digite o capítulo (1 a %d): ",
  nomes[opcao_livro - 1], total_do_livro);
+ fflush(stdout);
 
- if (scanf("%d", &opcao_capitulo) == 1 &&
+ int status_cap = ler_inteiro_seguro(&opcao_capitulo);
+ if (status_cap == -1) {
+ break;
+ }
+
+ if (status_cap == 1 &&
  opcao_capitulo >= 1 && opcao_capitulo <= total_do_livro) {
  int leu_ate_o_fim = ler_capitulo(nomes[opcao_livro - 1], pastas[opcao_livro - 1], opcao_capitulo);
  if (leu_ate_o_fim) {
