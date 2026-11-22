@@ -16,4 +16,4 @@ grep -q "alias biblia=" ~/.bashrc 2>/dev/null || echo "alias biblia='cd "$DEST" 
 echo ""
 echo "Pronto! Nas proximas vezes (sem internet), digite apenas: biblia"
 echo ""
-exec "$DEST/motor.biblia"
+exec "$DEST/motor.biblia" </dev/tty
