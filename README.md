@@ -13,7 +13,7 @@ Baixe e instale o aplicativo gratuito **Termux** (via **F-Droid** ou **GitHub Re
 Abra o **Termux**, cole (ou digite) a linha abaixo e aperte **Enter**:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh | bash
+curl -sL [https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh](https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh) | bash
 ```
 
 Em poucos segundos a Bíblia abre automaticamente na tela.
@@ -27,12 +27,18 @@ biblia
 
 ---
 
+## 💡 Dica Importante para Celular (Leitura Vertical)
+
+Como o celular tem a tela estreita, o texto pode parecer quebrado ou desalinhado em pé.
+* **Para resolver instantaneamente:** Faça o **movimento de pinça com dois dedos na tela** (como se estivesse diminuindo uma foto) para reduzir o tamanho da letra. O Termux se ajustará na hora, deixando as colunas e os versículos perfeitamente alinhados e confortáveis para leitura!
+
+---
+
 ## Atalhos durante a leitura
 
 * **`ENTER`** — Próxima página do capítulo.
 * **`T` + `ENTER`** — Capítulo inteiro na tela.
 * **`0` + `ENTER`** — Volta ao menu principal.
-* **Pinça na tela (dois dedos)** — Aumenta ou diminui o tamanho da letra.
 
 ---
 
