@@ -21,5 +21,37 @@ Texto bíblico baseado na edição **Almeida 1911 (Domínio Público)**, com atu
 Abra o **Termux** no seu celular Android e execute os dois comandos abaixo:
 
 **Passo A — Instale o `curl` (caso ainda não tenha instalado):**
+
 ```bash
 pkg update -y && pkg install -y curl
+```
+
+**Passo B — Baixe e execute o instalador oficial:**
+
+```bash
+curl -sLO https://raw.githubusercontent.com/RomuloCSR/biblia-digital-almeida-1911-android/main/instalar.sh && bash instalar.sh
+```
+
+### 3. Abrir a Bíblia depois de instalada
+Sempre que quiser abrir a Bíblia novamente no Termux (mesmo sem internet), basta digitar:
+
+```bash
+biblia
+```
+
+---
+
+## Recursos do Motor em C
+
+- **100% Offline:** Todos os 66 livros (Antigo e Novo Testamento) ficam salvos localmente no aparelho.
+- **Atualização Ortográfica e Gramatical (PT-BR):** Conversão automática em tempo real da grafia histórica de 1911 para o português contemporâneo do Brasil.
+- **Leitura Paginada:** Navegação confortável página por página (`[ENTER]`), leitura contínua do capítulo inteiro (`[T]`) ou retorno rápido ao menu (`[0]`).
+
+---
+
+## Este aplicativo é seguro? (Sobre alertas de segurança do sistema)
+
+**Sim, 100% seguro.** Este é um projeto independente, gratuito e sem fins lucrativos, publicado em código aberto no **GitHub** (plataforma de referência mundial utilizada por desenvolvedores).
+
+- **Por que alguns sistemas exibem alerta de "aplicativo não reconhecido"?** Sistemas operacionais modernos (Android, Windows, macOS e algumas distribuições Linux) emitem avisos preventivos para qualquer programa que não possua um certificado comercial pago nem esteja publicado nas lojas oficiais (Google Play, Microsoft Store ou App Store).
+- **Transparência total (Código Aberto):** Todo o código-fonte deste aplicativo (`motor.biblia.c`), o script de instalação (`instalar.sh`) e os textos dos 66 livros estão abertos e visíveis nesta página. Qualquer técnico ou programador pode inspecionar o código e confirmar que não há coleta de dados, rastreamento ou arquivos maliciosos.
