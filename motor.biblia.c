@@ -16,7 +16,8 @@
 #include <sys/ioctl.h>
 
 #define MAX_LINHA 8192
-#define LARGURA_PAGINA 74
+#define LARGURA_PAGINA_MAX 74
+#define LARGURA_PAGINA (obter_largura_pagina())
 
 /* Códigos ANSI suaves para conforto de leitura */
 #define COR_RESET   "\033[0m"
@@ -112,6 +113,15 @@ void obter_dimensoes_terminal(int *largura, int *altura) {
  *largura = 80;
  *altura = 24;
  }
+}
+
+int obter_largura_pagina(void) {
+  int cols = 80, rows = 24;
+  obter_dimensoes_terminal(&cols, &rows);
+  int larg = cols - 4;
+  if (larg > LARGURA_PAGINA_MAX) larg = LARGURA_PAGINA_MAX;
+  if (larg < 32) larg = 32;
+  return larg;
 }
 
 int calcular_margem_esquerda(int largura_conteudo) {
@@ -1375,7 +1385,95 @@ void atualizar_ortografia(char *texto) {
  substituir_texto(texto, "de sorte que", "de modo que");
  substituir_texto(texto, "De sorte que", "De modo que");
 
- converter_infinitivo_lusitano_para_gerundio(texto);
+ /* Bloco 12: Revisao ortografica complementar (Lote 1 - 11/2026) */
+  substituir_palavra_inteira(texto, "oiro", "ouro");
+  substituir_palavra_inteira(texto, "Oiro", "Ouro");
+  substituir_palavra_inteira(texto, "oiros", "ouros");
+  substituir_palavra_inteira(texto, "Oiros", "Ouros");
+  substituir_palavra_inteira(texto, "tesoiro", "tesouro");
+  substituir_palavra_inteira(texto, "Tesoiro", "Tesouro");
+  substituir_palavra_inteira(texto, "tesoiros", "tesouros");
+  substituir_palavra_inteira(texto, "Tesoiros", "Tesouros");
+  substituir_palavra_inteira(texto, "toiro", "touro");
+  substituir_palavra_inteira(texto, "Toiro", "Touro");
+  substituir_palavra_inteira(texto, "toiros", "touros");
+  substituir_palavra_inteira(texto, "Toiros", "Touros");
+  substituir_palavra_inteira(texto, "coiro", "couro");
+  substituir_palavra_inteira(texto, "Coiro", "Couro");
+  substituir_palavra_inteira(texto, "coiros", "couros");
+  substituir_palavra_inteira(texto, "Coiros", "Couros");
+  substituir_palavra_inteira(texto, "loiro", "louro");
+  substituir_palavra_inteira(texto, "Loiro", "Louro");
+  substituir_palavra_inteira(texto, "loiros", "louros");
+  substituir_palavra_inteira(texto, "Loiros", "Louros");
+  substituir_palavra_inteira(texto, "fructo", "fruto");
+  substituir_palavra_inteira(texto, "Fructo", "Fruto");
+  substituir_palavra_inteira(texto, "fructos", "frutos");
+  substituir_palavra_inteira(texto, "Fructos", "Frutos");
+  substituir_palavra_inteira(texto, "fructificar", "frutificar");
+  substituir_palavra_inteira(texto, "fructificai", "frutificai");
+  substituir_palavra_inteira(texto, "fructifera", "frutífera");
+  substituir_palavra_inteira(texto, "fructiferas", "frutíferas");
+  substituir_palavra_inteira(texto, "fructifero", "frutífero");
+  substituir_palavra_inteira(texto, "fructiferos", "frutíferos");
+  substituir_palavra_inteira(texto, "acto", "ato");
+  substituir_palavra_inteira(texto, "Acto", "Ato");
+  substituir_palavra_inteira(texto, "actos", "atos");
+  substituir_palavra_inteira(texto, "Actos", "Atos");
+  substituir_palavra_inteira(texto, "facto", "fato");
+  substituir_palavra_inteira(texto, "Facto", "Fato");
+  substituir_palavra_inteira(texto, "factos", "fatos");
+  substituir_palavra_inteira(texto, "Factos", "Fatos");
+  substituir_palavra_inteira(texto, "pacto", "pato");
+  substituir_palavra_inteira(texto, "recto", "reto");
+  substituir_palavra_inteira(texto, "Recto", "Reto");
+  substituir_palavra_inteira(texto, "rectos", "retos");
+  substituir_palavra_inteira(texto, "Rectos", "Retos");
+  substituir_palavra_inteira(texto, "recta", "reta");
+  substituir_palavra_inteira(texto, "Recta", "Reta");
+  substituir_palavra_inteira(texto, "rectas", "retas");
+  substituir_palavra_inteira(texto, "Rectas", "Retas");
+  substituir_palavra_inteira(texto, "rectidão", "retidão");
+  substituir_palavra_inteira(texto, "Rectidão", "Retidão");
+  substituir_palavra_inteira(texto, "directo", "direto");
+  substituir_palavra_inteira(texto, "Directo", "Direto");
+  substituir_palavra_inteira(texto, "directa", "direta");
+  substituir_palavra_inteira(texto, "Directa", "Direta");
+  substituir_palavra_inteira(texto, "direcção", "direção");
+  substituir_palavra_inteira(texto, "Direcção", "Direção");
+  substituir_palavra_inteira(texto, "correcção", "correção");
+  substituir_palavra_inteira(texto, "Correcção", "Correção");
+  substituir_palavra_inteira(texto, "aflicção", "aflição");
+  substituir_palavra_inteira(texto, "Aflicção", "Aflição");
+  substituir_palavra_inteira(texto, "afflicção", "aflição");
+  substituir_palavra_inteira(texto, "Afflicção", "Aflição");
+  substituir_palavra_inteira(texto, "maldicção", "maldição");
+  substituir_palavra_inteira(texto, "Maldicção", "Maldição");
+  substituir_palavra_inteira(texto, "benedicção", "bênção");
+  substituir_palavra_inteira(texto, "Benedicção", "Bênção");
+  substituir_palavra_inteira(texto, "instrucção", "instrução");
+  substituir_palavra_inteira(texto, "Instrucção", "Instrução");
+  substituir_palavra_inteira(texto, "destruição", "destruição");
+  substituir_palavra_inteira(texto, "destruicção", "destruição");
+  substituir_palavra_inteira(texto, "construcção", "construção");
+  substituir_palavra_inteira(texto, "resurreição", "ressurreição");
+  substituir_palavra_inteira(texto, "Resurreição", "Ressurreição");
+  substituir_palavra_inteira(texto, "hymno", "hino");
+  substituir_palavra_inteira(texto, "Hymno", "Hino");
+  substituir_palavra_inteira(texto, "hymnos", "hinos");
+  substituir_palavra_inteira(texto, "Hymnos", "Hinos");
+  substituir_palavra_inteira(texto, "somno", "sono");
+  substituir_palavra_inteira(texto, "Somno", "Sono");
+  substituir_palavra_inteira(texto, "damno", "dano");
+  substituir_palavra_inteira(texto, "Damno", "Dano");
+  substituir_palavra_inteira(texto, "damnos", "danos");
+  substituir_palavra_inteira(texto, "condemnação", "condenação");
+  substituir_palavra_inteira(texto, "Condemnação", "Condenação");
+  substituir_palavra_inteira(texto, "condemnar", "condenar");
+  substituir_palavra_inteira(texto, "condemnado", "condenado");
+  substituir_palavra_inteira(texto, "condemnados", "condenados");
+
+  converter_infinitivo_lusitano_para_gerundio(texto);
 }
 
 void limpar_texto_verso(const char *origem, char *destino) {
@@ -1673,18 +1771,19 @@ int main(void) {
  imprimir_separador(LARGURA_PAGINA, '=');
  printf("\n");
 
+ int cols_grade = (LARGURA_PAGINA >= 72) ? 3 : ((LARGURA_PAGINA >= 46) ? 2 : 1);
  for (int i = 0; i < total_livros; i++) {
- if (i % 3 == 0) {
- imprimir_espacos(margem);
- }
- imprimir_coluna(i + 1, nomes[i]);
- if ((i + 1) % 3 == 0) {
- printf("\n");
- }
+   if (i % cols_grade == 0) {
+     imprimir_espacos(margem);
+   }
+   imprimir_coluna(i + 1, nomes[i]);
+   if ((i + 1) % cols_grade == 0) {
+     printf("\n");
+   }
  }
 
- if (total_livros % 3 != 0) {
- printf("\n");
+ if (total_livros % cols_grade != 0) {
+   printf("\n");
  }
 
  printf("\n");
