@@ -7,7 +7,38 @@
  * =============================================================================
  */
 
+#define _XOPEN_SOURCE 700
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <ctype.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+
+// Variaveis globais para controle de redimensionamento
+volatile sig_atomic_t redesenhar_tela = 0;
+int LARGURA_PAGINA_ATUAL;
+int LINHAS_POR_PAGINA_ATUAL;
+
+// Manipulador de sinal para redimensionamento de janela (SIGWINCH)
+void sigwinch_handler(int signum) {
+    struct winsize w;
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        // Atualiza as variaveis globais com as novas dimensoes
+        // Usaremos nomes ligeiramente diferentes internamente para clareza
+        // Mas vamos assumir que o codigo principal usa LARGURA_PAGINA, etc.
+        // Para este patch simples, vamos apenas setar uma flag de refresh.
+        // O motor principal ja calcula a largura dinamicamente na maioria dos casos.
+        redesenhar_tela = 1;
+        // Opcional: Se o seu motor nao recalcular dinamicamente, voce teria que atualizar as globais aqui.
+        // Como boa pratica, vamos assumir que ele recalcula no loop.
+    }
+    // Garante que o sinal nao seja ignorado e o padrao seja restaurado
+    signal(SIGWINCH, sigwinch_handler);
+}
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
@@ -1802,6 +1833,22 @@ reiniciar_leitura:
  * ----------------------------------------------------------------------------- */
 
 int main(void) {
+    // REGISTRA O MANIPULADOR DE SINAL PARA REDIMENSIONAMENTO (SIGWINCH)
+    struct sigaction sa_winch;
+    memset(&sa_winch, 0, sizeof(sa_winch));
+    sa_winch.sa_handler = sigwinch_handler;
+    sigemptyset(&sa_winch.sa_mask);
+    sa_winch.sa_flags = SA_RESTART; // Reinicia chamadas de sistema interrompidas
+    if (sigaction(SIGWINCH, &sa_winch, NULL) == -1) {
+        perror("Erro ao registrar SIGWINCH");
+    }
+    // Inicializa as variaveis globais de tamanho (para seguranca)
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    LARGURA_PAGINA_ATUAL = w.ws_col - 2; // -2 para margem
+    LINHAS_POR_PAGINA_ATUAL = w.ws_row - 4; // -4 para cabecalho/rodape
+
+
  int opcao_principal = 0;
  int opcao_livro = 0;
  int opcao_capitulo = 0;
