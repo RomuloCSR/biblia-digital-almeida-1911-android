@@ -1817,9 +1817,10 @@ int main(void) {
  imprimir_linha_centralizada("BÍBLIA DIGITAL ALMEIDA 1911 EM PT-BR (DOMÍNIO PÚBLICO)", LARGURA_PAGINA);
  imprimir_linha_centralizada("Atualização Ortográfica e Gramatical realizada em 11/2026", LARGURA_PAGINA);
  printf("%s%s", COR_RESET, COR_DIM);
- imprimir_linha_centralizada("Motor de navegação para Android ARM64  |  Autor: Romulo CSR", LARGURA_PAGINA);
+ imprimir_linha_centralizada("Motor C (ARM64) — Termux", LARGURA_PAGINA);
+ imprimir_linha_centralizada("Autor: Romulo CSR", LARGURA_PAGINA);
  imprimir_linha_centralizada("Download free: github.com/RomuloCSR", LARGURA_PAGINA);
- imprimir_linha_centralizada("Colabore espontaneamente com esta obra via PIX: 21980934118", LARGURA_PAGINA);
+ imprimir_linha_centralizada("Apoio PIX: 21980934118", LARGURA_PAGINA);
  printf("%s", COR_RESET);
  imprimir_separador(LARGURA_PAGINA, '=');
  printf("\n");
