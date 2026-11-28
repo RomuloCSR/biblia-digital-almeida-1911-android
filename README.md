@@ -45,6 +45,8 @@ biblia
 
 - **100% Offline:** Todos os 66 livros (Antigo e Novo Testamento) ficam salvos localmente no aparelho.
 - **Atualização Ortográfica e Gramatical (PT-BR):** Conversão automática em tempo real da grafia histórica de 1911 para o português contemporâneo do Brasil.
+- **Código-fonte:** leitor em `terminal.c`; o texto (limpeza do Markdown e atualização ortográfica) vem do kernel da Bíblia na pasta `kernel/` (veja `kernel/LEIAME.md`).
+- **Compilar no próprio Termux (opcional):** `pkg install -y clang` e depois `clang -O2 terminal.c kernel/biblia_kernel.c -o motor.biblia`
 - **Leitura Paginada:** Navegação confortável página por página (`[ENTER]`), leitura contínua do capítulo inteiro (`[T]`) ou retorno rápido ao menu (`[0]`).
 
 ---
@@ -54,4 +56,4 @@ biblia
 **Sim, 100% seguro.** Este é um projeto independente, gratuito e sem fins lucrativos, publicado em código aberto no **GitHub** (plataforma de referência mundial utilizada por desenvolvedores).
 
 - **Por que alguns sistemas exibem alerta de "aplicativo não reconhecido"?** Sistemas operacionais modernos (Android, Windows, macOS e algumas distribuições Linux) emitem avisos preventivos para qualquer programa que não possua um certificado comercial pago nem esteja publicado nas lojas oficiais (Google Play, Microsoft Store ou App Store).
-- **Transparência total (Código Aberto):** Todo o código-fonte deste aplicativo (`motor.biblia.c`), o script de instalação (`instalar.sh`) e os textos dos 66 livros estão abertos e visíveis nesta página. Qualquer técnico ou programador pode inspecionar o código e confirmar que não há coleta de dados, rastreamento ou arquivos maliciosos.
+- **Transparência total (Código Aberto):** Todo o código-fonte deste aplicativo (`terminal.c` e a pasta `kernel/`), o script de instalação (`instalar.sh`) e os textos dos 66 livros estão abertos e visíveis nesta página. Qualquer técnico ou programador pode inspecionar o código e confirmar que não há coleta de dados, rastreamento ou arquivos maliciosos.
